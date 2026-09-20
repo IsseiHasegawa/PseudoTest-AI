@@ -20,6 +20,19 @@ python3 -m venv .venv
 
 You should see **both** `analyze` and `improve`. Using the executable by its full path avoids a shell alias or deactivated environment issue. If your shell already has a `pseudotest` from the older venv, use `~/Downloads/PseudoTest-AI/.venv/bin/pseudotest` instead.
 
+### Using uv
+
+If you have [uv](https://docs.astral.sh/uv/) installed, the equivalent setup is:
+
+```bash
+cd ~/Downloads/PseudoTest-AI
+uv sync
+uv run pseudotest --help
+```
+
+Run the test suite with `uv run pytest tests/ -q`. The `uv.lock` file pins the
+resolved dependencies for reproducible setup.
+
 ## Run against an external repository
 
 The repository under test stays outside this tool folder. Install its test dependencies into the **new** `.venv` above using its own project instructions, then:
