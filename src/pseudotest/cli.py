@@ -87,6 +87,12 @@ def main(argv: list[str] | None = None) -> int:
           f"{result['baseline']['seconds']:.3f} s")
     print("Functions: " + ", ".join(f"{key}={count}" for key, count in sorted(groups.items())))
     candidates = [f for f in result["functions"] if f["status"] == "PSEUDO_TESTED_CANDIDATE"]
+    total_functions = len(result["functions"])
+    if total_functions:
+        pt_rate = len(candidates) / total_functions * 100
+        print(f"PT candidate rate: {len(candidates)}/{total_functions} ({pt_rate:.1f}%)")
+    else:
+        print("PT candidate rate: N/A (no target functions)")
     print(f"\nPSEUDO-TESTED CANDIDATES ({len(candidates)})")
     for fn in candidates:
         print(f"  {fn['name']}()  {fn['path']}:{fn['line']}  related tests={len(fn['selected_tests'])}")
