@@ -17,6 +17,17 @@ all test runs. For example, from outside the target repository:
 python -m pip install /path/to/PseudoTest-AI
 ```
 
+With [uv](https://docs.astral.sh/uv/), create the project environment and run
+the CLI with:
+
+```bash
+cd /path/to/PseudoTest-AI
+uv sync
+uv run pseudotest --help
+```
+
+For development, run the test suite with `uv run pytest tests/ -q`.
+
 You can also use `python -m pip install -e /path/to/PseudoTest-AI` while
 contributing to the tool. Dependencies for the *target project* must already be
 installed in that environment. Do **not** install PseudoTest AI by copying its
@@ -216,8 +227,8 @@ covered either. Unknown static Python constructs are not assumed to be safe.
 
 ```bash
 cd /path/to/PseudoTest-AI
-python -m pip install -e .
-python -m pytest tests/ -q
+uv sync
+uv run pytest tests/ -q
 ```
 
 The test suite includes unit checks and subprocess-based integration tests for
