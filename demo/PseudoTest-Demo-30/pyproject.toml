@@ -1,0 +1,8 @@
+[project]
+name = "pseudotest-campus-shop-demo"
+version = "0.1.0"
+description = "Thirty-function demonstration repository for PseudoTest AI"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
